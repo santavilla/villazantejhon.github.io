@@ -1,0 +1,296 @@
+/* =============================================
+   ANIMATIONS — Jhon Villazante Portfolio
+   ============================================= */
+
+/* --- Scroll-triggered animations --- */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.animate-on-scroll.visible,
+.animate-on-scroll.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.animate-on-scroll[data-animation="fade-up"] {
+    transform: translateY(40px);
+}
+
+.animate-on-scroll[data-animation="fade-up"].visible,
+.animate-on-scroll[data-animation="fade-up"].animated {
+    transform: translateY(0);
+}
+
+.animate-on-scroll[data-animation="fade-right"] {
+    transform: translateX(-40px);
+}
+
+.animate-on-scroll[data-animation="fade-right"].visible,
+.animate-on-scroll[data-animation="fade-right"].animated {
+    transform: translateX(0);
+}
+
+.animate-on-scroll[data-animation="fade-left"] {
+    transform: translateX(40px);
+}
+
+.animate-on-scroll[data-animation="fade-left"].visible,
+.animate-on-scroll[data-animation="fade-left"].animated {
+    transform: translateX(0);
+}
+
+.animate-on-scroll[data-animation="fade-in"] {
+    transform: none;
+}
+
+.animate-on-scroll[data-animation="fade-in"].visible,
+.animate-on-scroll[data-animation="fade-in"].animated {
+    transform: none;
+}
+
+.animate-on-scroll[data-animation="scale-up"] {
+    transform: scale(0.9);
+}
+
+.animate-on-scroll[data-animation="scale-up"].visible,
+.animate-on-scroll[data-animation="scale-up"].animated {
+    transform: scale(1);
+}
+
+@keyframes floatParticle {
+    0% { transform: translate(0, 0); opacity: 0.2; }
+    50% { opacity: 0.7; }
+    100% { transform: translate(25px, -35px); opacity: 0.3; }
+}
+
+/* Stagger delays for groups */
+.animate-on-scroll[data-delay="100"] { transition-delay: 100ms; }
+.animate-on-scroll[data-delay="200"] { transition-delay: 200ms; }
+.animate-on-scroll[data-delay="300"] { transition-delay: 300ms; }
+.animate-on-scroll[data-delay="400"] { transition-delay: 400ms; }
+.animate-on-scroll[data-delay="500"] { transition-delay: 500ms; }
+.animate-on-scroll[data-delay="600"] { transition-delay: 600ms; }
+.animate-on-scroll[data-delay="700"] { transition-delay: 700ms; }
+
+/* --- Typed text effect for hero name --- */
+@keyframes typewriter {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+/* --- Gradient animation for hero name --- */
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.hero-name {
+    background-size: 200% 200%;
+    animation: gradientShift 8s ease infinite;
+}
+
+/* --- Section separator animated line --- */
+.section-line {
+    position: relative;
+    overflow: hidden;
+}
+
+.section-line::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 200%; }
+}
+
+/* --- Skill item hover glow --- */
+.skill-item::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, var(--color-primary-500), var(--color-primary-700));
+    opacity: 0;
+    z-index: -1;
+    transition: opacity var(--transition-base);
+}
+
+.skill-item {
+    position: relative;
+    z-index: 0;
+}
+
+/* --- Project card image gradient overlay --- */
+.project-card-image::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(to top, var(--color-bg-card), transparent);
+    pointer-events: none;
+}
+
+/* --- Timeline marker pulse --- */
+.timeline-marker::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 1px solid var(--color-primary-500);
+    opacity: 0;
+    animation: markerPulse 3s ease-in-out infinite;
+}
+
+@keyframes markerPulse {
+    0%, 100% { transform: scale(1); opacity: 0; }
+    50% { transform: scale(1.4); opacity: 0.3; }
+}
+
+/* --- Contact card item subtle glow on hover --- */
+.contact-card-item::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(circle at 0% 50%, rgba(51, 102, 255, 0.05), transparent 70%);
+    opacity: 0;
+    transition: opacity var(--transition-base);
+    pointer-events: none;
+}
+
+.contact-card-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-card-item:hover::before {
+    opacity: 1;
+}
+
+/* --- Nav link underline animation --- */
+.nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--color-primary);
+    border-radius: var(--radius-full);
+    transition: width var(--transition-base), left var(--transition-base);
+}
+
+.nav-link:hover::before {
+    width: 60%;
+    left: 20%;
+}
+
+/* --- Button press effect --- */
+.btn:active {
+    transform: translateY(0) scale(0.97);
+}
+
+/* --- Badge dot glow --- */
+.badge-dot {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+}
+
+@keyframes badgePulse {
+    0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+.badge-dot {
+    animation: pulse 2s ease-in-out infinite, badgePulse 2s ease-in-out infinite;
+}
+
+/* --- Smooth section transitions via alternating backgrounds --- */
+.about-section::before,
+.skills-section::before,
+.experience-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-border), transparent);
+}
+
+/* --- Hero section bottom fade --- */
+.hero-section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    background: linear-gradient(to top, var(--color-bg-secondary), transparent);
+    pointer-events: none;
+}
+
+/* --- Reduced motion --- */
+@media (prefers-reduced-motion: reduce) {
+    .animate-on-scroll {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    .hero-name {
+        animation: none;
+    }
+
+    .section-line::after {
+        animation: none;
+    }
+
+    .timeline-marker::after {
+        animation: none;
+    }
+
+    .badge-dot {
+        animation: none;
+    }
+
+    .particle {
+        animation: none;
+        display: none;
+    }
+
+    .avatar-ring {
+        animation: none;
+    }
+
+    .avatar-decoration {
+        animation: none;
+    }
+
+    .hero-gradient-orb {
+        animation: none;
+    }
+
+    .scroll-wheel {
+        animation: none;
+    }
+
+    .preloader-bar {
+        animation: none;
+    }
+}
