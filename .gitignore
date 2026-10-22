@@ -10,3 +10,10 @@ ytyty.mhtml
 *.log
 scratch/
 .system_generated/
+
+# Raw media folders not used in the published site
+/imagenes/
+/imagenes cobertura metalica/
+/imagenes institucionales/
+/imagenes promo/
+/nuevas iconos/
